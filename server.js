@@ -28,12 +28,12 @@ app.get('/peliculas', async (req, res) => {
 });
 
 app.post('/peliculas', async (req, res) => {
-  const { titulo, director, anio, descripcion, favorita } = req.body;
+  const { titulo, director, anio, descripcion, favorita, genero } = req.body;
 
   try {
     const { rows } = await pool.query(
-      'INSERT INTO peliculas (titulo, director, anio, descripcion, favorita) VALUES ($1, $2, $3, $4, $5) RETURNING *',
-      [titulo, director, anio, descripcion, favorita]
+      'INSERT INTO peliculas (titulo, director, anio, descripcion, favorita, genero) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *',
+      [titulo, director, anio, descripcion, favorita, genero]
     );
     res.json(rows[0]);
   } catch (error) {
@@ -61,12 +61,12 @@ app.get('/peliculas/:id', async (req, res) => {
 
 app.put('/peliculas/:id', async (req, res) => {
   const { id } = req.params;
-  const { titulo, director, anio, descripcion, favorita } = req.body;
+  const { titulo, director, anio, descripcion, favorita, genero } = req.body;
 
   try {
     const { rows } = await pool.query(
-      'UPDATE peliculas SET titulo = $1, director = $2, anio = $3, descripcion = $4, favorita = $5 WHERE id = $6 RETURNING *',
-      [titulo, director, anio, descripcion, favorita, id]
+      'UPDATE peliculas SET titulo = $1, director = $2, anio = $3, descripcion = $4, favorita = $5, genero = $6 WHERE id = $7 RETURNING *',
+      [titulo, director, anio, descripcion, favorita, genero, id]
     );
 
     if (rows.length > 0) {
