@@ -5,10 +5,10 @@ const { Pool } = require('pg');
 
 const pool = new Pool({
   user: 'postgres',
-  host: 'containers-us-west-148.railway.app',
+  host: 'containers-us-west-50.railway.app',
   database: 'railway',
-  password: 'jvUbcEISy6BGriFgNUOr',
-  port: 6478,
+  password: 'g8uLm1GGxweB7lUvsGOY',
+  port: 7635,
 });
 
 app.use(express.json());
