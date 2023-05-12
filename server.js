@@ -17,6 +17,9 @@ app.use(cors());
 app.get('/peliculas', async (req, res) => {
   try {
     const { rows } = await pool.query('SELECT * FROM peliculas');
+    if(rows.length == 0){
+      res.json({mensaje: 'No hay peliculas'})
+    }
     res.json(rows);
   } catch (error) {
     console.error(error);
