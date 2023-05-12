@@ -4,11 +4,11 @@ const cors = require('cors');
 const { Pool } = require('pg');
 
 const pool = new Pool({
-  user: 'usuario',
-  host: 'localhost',
-  database: 'nombre_de_la_base_de_datos',
-  password: 'contraseña',
-  port: 5432,
+  user: 'postgres',
+  host: 'containers-us-west-148.railway.app',
+  database: 'railway',
+  password: 'jvUbcEISy6BGriFgNUOr',
+  port: 6478,
 });
 
 app.use(express.json());
